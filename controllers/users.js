@@ -77,22 +77,6 @@ const login = (req, res, next) => {
     });
 };
 
-const updateProfile = (req, res, next) => {
-  const { name, avatar } = req.body;
 
-  User.findByIdAndUpdate(
-    req.user._id,
-    { name, avatar },
-    { new: true, runValidators: true }
-  )
-    .orFail()
-    .then((user) => {
-      res.status(200).send(user);
-    })
-    .catch((err) => {
-      console.error(err);
-      handleRepeatErrors(err, res, next);
-    });
-};
 
-module.exports = { createUser, getCurrentUser, login, updateProfile };
+module.exports = { createUser, getCurrentUser, login };
