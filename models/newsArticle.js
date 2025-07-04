@@ -9,13 +9,13 @@ const newsArticleSchema = new mongoose.Schema({
     maxlength: 30,
   },
   source: { id: String, name: String },
-  description: String,
+  description: { type: String, required: true },
   url: {
     type: String,
     required: true,
     unique: true,
   },
-  urlToImage: String,
+  urlToImage: { type: String, required: true },
   publishedAt: Date,
   likes: {
     type: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
@@ -27,3 +27,5 @@ const newsArticleSchema = new mongoose.Schema({
     required: true,
   },
 });
+
+module.exports = mongoose.model("newsArticle", newsArticleSchema);
