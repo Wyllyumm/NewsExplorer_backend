@@ -50,7 +50,16 @@ const validateUserLogin = celebrate({
   }),
 });
 
+const validateItemId = celebrate({
+  params: Joi.object().keys({
+    itemId: Joi.string().hex().length(24),
+  }),
+
+});
+
+
 module.exports = {
   validateUserSignup,
   validateUserLogin,
+  validateItemId,
 };
