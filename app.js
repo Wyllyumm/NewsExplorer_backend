@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require("mongoose");
 const cors = require("cors");
 const { errors } = require("celebrate");
 require("dotenv").config();
@@ -11,7 +12,7 @@ const { limiter } = require("./middlewares/rateLimiter");
 const app = express();
 
 const { PORT = 3001 } = process.env;
-/*mongoose
+mongoose
   .connect("mongodb://127.0.0.1:27017/newsexplorer_db", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -19,7 +20,7 @@ const { PORT = 3001 } = process.env;
   .then(() => {
     console.log("Connected to the db");
   })
-  .catch((e) => console.error(e)); */
+  .catch((e) => console.error(e));
 
 app.use(express.json());
 app.use(cors());
