@@ -6,6 +6,7 @@ require("dotenv").config();
 const mainRouter = require("./routes/index.js");
 const { errorHandler } = require("./middlewares/error-handler.js");
 const { requestLogger, errorLogger } = require("./middlewares/logger.js");
+const { limiter } = require("./middlewares/rateLimiter");
 
 const app = express();
 
@@ -22,6 +23,7 @@ const { PORT = 3001 } = process.env;
 
 app.use(express.json());
 app.use(cors());
+app.use(limiter);
 app.use(requestLogger);
 
 app.use("/", mainRouter);
